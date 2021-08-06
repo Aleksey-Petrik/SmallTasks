@@ -4,6 +4,7 @@ public class SortingAlgorithms {
     public static void main(String[] args) {
         System.out.println(Arrays.toString(bubbleMethod(new int[]{4, 3, 7, 1, 0, 2})));
         System.out.println(Arrays.toString(insertMethod(new int[]{4, 3, 7, 1, 0, 2})));
+        System.out.println(Arrays.toString(selectMethod(new int[]{4, 3, 7, 1, 0, 2})));
     }
 
     /*
@@ -30,6 +31,24 @@ public class SortingAlgorithms {
         for (int i = 1; i < array.length; i++){
             for(int j = i; j > 0 && array[j - 1] > array[j]; j--){
                 swap(array, j - 1, j);
+            }
+        }
+        return array;
+    }
+
+    /*
+        Сортировка методом "Выбором"
+     */
+    public static int[] selectMethod(int[] array){
+        for (int i = 0; i < array.length - 1; i++){
+            int minIndex = i;
+            for(int j = i + 1; j < array.length; j++){
+                if (array[minIndex] > array[j]) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                swap(array, minIndex, i);
             }
         }
         return array;
