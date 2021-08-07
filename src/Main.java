@@ -32,7 +32,10 @@ public class Main {
         //ListNode newList = mergeTwoLists(list1, list2);
 
         System.out.println(Arrays.toString(plusOne(new int[]{9, 9, 9})));
+        System.out.println(removeElement(new int[]{0, 1, 2, 2, 3, 0, 4, 2}, 2));
+        System.out.println(removeDuplicates(new int[]{0, 1}));
 
+        System.out.println(strStr("mississippi", "issip"));
     }
 
     /*
@@ -186,6 +189,89 @@ public class Main {
         //return new ListNode(1);
     }//#21
 
+    /*  Task 26  Remove Duplicates from Sorted Array. https://leetcode.com
+    Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once.
+    The relative order of the elements should be kept the same.
+    Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums.
+    More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result.
+    It does not matter what you leave beyond the first k elements.
+    Return k after placing the final result in the first k slots of nums.
+    Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+     */
+    public static int removeDuplicates(int[] nums) {
+        int index = 1;
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] != nums[i + 1]) {
+                nums[index++] = nums[i + 1];
+            }
+        }
+        return index;
+    }//#26
+
+    /*  Task 27 Remove Element. https://leetcode.com
+        Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+        Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums.
+        More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result.
+        It does not matter what you leave beyond the first k elements.
+        Return k after placing the final result in the first k slots of nums.
+        Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+
+        Input: nums = [3,2,2,3], val = 3
+        Output: 2, nums = [2,2,_,_]
+     */
+    public static int removeElement(int[] nums, int val) {
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[index] = nums[i];
+                index++;
+            }
+        }
+        return index;
+    }//#27
+
+    /*  Task 28. Implement strStr(). https://leetcode.com
+        Implement strStr().
+        Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+        Clarification:
+        What should we return when needle is an empty string? This is a great question to ask during an interview.
+        For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
+     */
+    public static int strStr(String haystack, String needle) {
+        if (needle.isEmpty()){
+            return 0;
+        }
+        char[]strLine = haystack.toCharArray();
+        char[]strSearch = needle.toCharArray();
+        int index = 0;
+        for(int i = 0; i < strLine.length; i++ ){
+            if (strLine[i] == strSearch[index]) {
+                if (index == strSearch.length - 1){
+                    return i - index;
+                }
+                index++;
+            } else {
+                if (index != 0) {
+                    i -= index;
+                }
+                index = 0;
+            }
+        }
+
+        return -1;
+    }//#28
+
+    /*  Task 28. Implement strStr(). https://leetcode.com
+        Implement strStr().
+        Return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+        Clarification:
+        What should we return when needle is an empty string? This is a great question to ask during an interview.
+        For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
+     */
+    public static int strStr_2(String haystack, String needle) {
+        return haystack.indexOf(needle);
+    }//#28
+
     /*  Task 66 Plus One. https://leetcode.com
         Given a non-empty array of decimal digits representing a non-negative integer, increment one to the integer.
         The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.
@@ -213,4 +299,5 @@ public class Main {
         }
         return digits;
     }//#66
+
 }
