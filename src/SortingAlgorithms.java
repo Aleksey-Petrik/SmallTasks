@@ -5,6 +5,10 @@ public class SortingAlgorithms {
         System.out.println(Arrays.toString(bubbleMethod(new int[]{4, 3, 7, 1, 0, 2})));
         System.out.println(Arrays.toString(insertMethod(new int[]{4, 3, 7, 1, 0, 2})));
         System.out.println(Arrays.toString(selectMethod(new int[]{4, 3, 7, 1, 0, 2})));
+
+        int[] array = new int[]{4, 3, 7, 1, 0, 2};
+        quickSortMethod(array, 0, array.length - 1);
+        System.out.println(Arrays.toString(array));
     }
 
     /*
@@ -27,9 +31,9 @@ public class SortingAlgorithms {
     /*
         Сортировка методом "Вставки"
      */
-    public static int[] insertMethod(int[] array){
-        for (int i = 1; i < array.length; i++){
-            for(int j = i; j > 0 && array[j - 1] > array[j]; j--){
+    public static int[] insertMethod(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i; j > 0 && array[j - 1] > array[j]; j--) {
                 swap(array, j - 1, j);
             }
         }
@@ -39,10 +43,10 @@ public class SortingAlgorithms {
     /*
         Сортировка методом "Выбором"
      */
-    public static int[] selectMethod(int[] array){
-        for (int i = 0; i < array.length - 1; i++){
+    public static int[] selectMethod(int[] array) {
+        for (int i = 0; i < array.length - 1; i++) {
             int minIndex = i;
-            for(int j = i + 1; j < array.length; j++){
+            for (int j = i + 1; j < array.length; j++) {
                 if (array[minIndex] > array[j]) {
                     minIndex = j;
                 }
@@ -52,6 +56,37 @@ public class SortingAlgorithms {
             }
         }
         return array;
+    }
+
+    /*
+        Сортировка методом "Быстрая сортировка метод Хоара"
+        URL - https://ru.wikipedia.org/wiki/Быстрая_сортировка
+     */
+    public static void quickSortMethod(int[] array, int lo, int hi) {
+        if (lo >= hi) {
+            return;
+        }
+        int h = breakPartition(array, lo, hi);
+        quickSortMethod(array, lo, h - 1);
+        quickSortMethod(array, h + 1, hi);
+    }
+
+    public static int breakPartition(int[] array, int lo, int hi) {
+        int i = lo + 1;
+        int j = hi;
+        int supportElement = array[lo];
+        while (true) {
+            for (; i < hi && array[i] < supportElement; i++) {
+            }
+            for (; array[j] > supportElement; j--) {
+            }
+            if (i >= j) {
+                break;
+            }
+            swap(array, i++, j--);
+        }
+        swap(array, lo, j);
+        return j;
     }
 
     /*
