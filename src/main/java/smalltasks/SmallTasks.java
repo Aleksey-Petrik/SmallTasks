@@ -1,6 +1,8 @@
+package main.java.smalltasks;
+
 import java.util.Arrays;
 
-public class Main {
+public class SmallTasks {
 
     //For Task 21.
     public static class ListNode {
