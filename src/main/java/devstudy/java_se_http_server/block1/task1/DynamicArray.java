@@ -51,7 +51,7 @@ public class DynamicArray {
   }
 
   private void checkIndex(int index) {
-    if (index > length || index < 0) {
+    if (index >= length || index < 0) {
       throw new IllegalArgumentException();
     }
   }
