@@ -6,19 +6,15 @@ public class LinkedList {
   private int size;
 
   public void add(int element) {
-    size++;
     if (first == null) {
-      first = new Item(element);
+      first = last = new Item(element);
     } else {
-      Item current = first;
-      while (current.getNext() != null) {
-        current = current.getNext();
-      }
       Item newItem = new Item(element);
-      newItem.setPrevious(current);
-      current.setNext(newItem);
+      last.setNext(newItem);
+      newItem.setPrevious(last);
       last = newItem;
     }
+    size++;
   }
 
   public int get(int index) {
