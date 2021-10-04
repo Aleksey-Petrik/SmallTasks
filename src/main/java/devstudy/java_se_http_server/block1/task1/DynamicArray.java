@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class DynamicArray {
   private final int DEFAULT_LENGTH = 10;
   private int[] array;
-  private int length;
+  protected int length;
 
   public DynamicArray() {
     init();

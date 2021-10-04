@@ -1,9 +1,9 @@
 package devstudy.java_se_http_server.block1.task1.linked_list;
 
 public class LinkedList {
-  private Item first;
-  private Item last;
-  private int size;
+  protected Item first;
+  protected Item last;
+  protected int size;
 
   public void add(int element) {
     if (first == null) {
