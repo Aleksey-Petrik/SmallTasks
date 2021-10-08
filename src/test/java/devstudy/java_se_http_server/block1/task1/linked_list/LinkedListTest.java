@@ -56,5 +56,7 @@ class LinkedListTest {
 
   @Test
   void findItem() {
+    Truth.assertWithMessage("").that(linkedList.findItem(6).getValue())
+            .isEqualTo(6);
   }
 }
