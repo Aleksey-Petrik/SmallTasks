@@ -5,8 +5,8 @@ import devstudy.java_se_http_server.block1.task1.DynamicArray;
 public class Stack extends DynamicArray {
 
   public int get() {
-    if (length > 0) {
-      return remove(length - 1);
+    if (size > 0) {
+      return remove(--size);
     }
     return -1;
   }

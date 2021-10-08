@@ -1,10 +1,10 @@
 package devstudy.java_se_http_server.block1.task1.linked_list;
 
-public class LinkedList {
+public class LinkedList extends DataSet {
   protected Item first;
   protected Item last;
-  protected int size;
 
+  @Override
   public void add(int element) {
     if (first == null) {
       first = last = new Item(element);
@@ -17,10 +17,12 @@ public class LinkedList {
     size++;
   }
 
+  @Override
   public int get(int index) {
     return findItem(index).getValue();
   }
 
+  @Override
   public int remove(int index) {
     checkIndex(index);
     Item current = findItem(index);
@@ -31,15 +33,13 @@ public class LinkedList {
     return current.getValue();
   }
 
-  public int size() {
-    return size;
-  }
-
+  @Override
   public void clear() {
-    size = 0;
+    super.clear();
     first = last = null;
   }
 
+  @Override
   public int[] toArray() {
     int[] array = new int[size];
     Item current = first;
