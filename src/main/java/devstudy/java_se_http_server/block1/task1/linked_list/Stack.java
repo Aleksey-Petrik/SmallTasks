@@ -6,7 +6,7 @@ public class Stack extends DynamicArray {
 
   public int get() {
     if (size > 0) {
-      return remove(--size);
+      return remove(size - 1);
     }
     return -1;
   }

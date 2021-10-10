@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class LinkedListTest {
-  private LinkedList linkedList = new LinkedList();
+  private final LinkedList linkedList = new LinkedList();
 
   @BeforeEach
   void setUp() {
@@ -40,6 +40,8 @@ class LinkedListTest {
   @Test
   void size() {
     Truth.assertWithMessage("").that(linkedList.size()).isEqualTo(20);
+    linkedList.clear();
+    Truth.assertWithMessage("").that(linkedList.size()).isEqualTo(0);
   }
 
   @Test
