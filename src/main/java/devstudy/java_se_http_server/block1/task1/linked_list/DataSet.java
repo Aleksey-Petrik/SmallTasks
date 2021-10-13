@@ -15,18 +15,17 @@ public abstract class DataSet {
     size = 0;
   }
 
-  public void add(int element) {
-  }
+  public abstract void add(int element);
 
-  public int get(int index) {
-    return 0;
-  }
+  public abstract int get(int index);
 
-  public int remove(int index) {
-    return 0;
-  }
+  public abstract int remove(int index);
 
-  public int[] toArray() {
-    return null;
+  public abstract int[] toArray();
+
+  protected void checkIndex(int index) {
+    if (index >= size || index < 0) {
+      throw new IllegalArgumentException();
+    }
   }
 }

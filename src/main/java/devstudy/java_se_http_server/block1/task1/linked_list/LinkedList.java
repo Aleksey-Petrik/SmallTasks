@@ -62,12 +62,6 @@ public class LinkedList extends DataSet {
     return null;
   }
 
-  private void checkIndex(int index) {
-    if (index >= size || index < 0) {
-      throw new IllegalArgumentException();
-    }
-  }
-
   private void deletePrevious(Item previous, Item next) {
     if (previous != null) {
       previous.setNext(next);
