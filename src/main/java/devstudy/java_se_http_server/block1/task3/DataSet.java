@@ -17,6 +17,8 @@ public abstract class DataSet<T> {
 
   public abstract void add(T element);
 
+  public abstract void addAll(LinkedList<T> linkedList);
+
   public abstract T get(int index);
 
   public abstract T remove(int index);
