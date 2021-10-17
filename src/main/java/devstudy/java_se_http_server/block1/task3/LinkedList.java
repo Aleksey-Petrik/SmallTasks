@@ -9,12 +9,24 @@ public class LinkedList<T> extends DataSet<T> {
     if (first == null) {
       first = last = new Item(element);
     } else {
-      Item<T> newItem = new Item(element);
+      var newItem = new Item(element);
       last.setNext(newItem);
       newItem.setPrevious(last);
       last = newItem;
     }
     size++;
+  }
+
+  @Override
+  public void addAll(LinkedList<T> linkedList) {
+    if (first == null) {
+      first = linkedList.first;
+    } else {
+      last.setNext(linkedList.first);
+      linkedList.first.setPrevious(last);
+    }
+    last = linkedList.last;
+    size += linkedList.size;
   }
 
   @Override
