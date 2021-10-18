@@ -17,7 +17,6 @@ public class LinkedList<T> extends DataSet<T> {
     size++;
   }
 
-  @Override
   public void addAll(LinkedList<T> linkedList) {
     if (first == null) {
       first = linkedList.first;

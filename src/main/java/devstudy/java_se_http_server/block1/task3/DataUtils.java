@@ -40,15 +40,29 @@ public final class DataUtils {
       public T[] toArray() {
         return Arrays.copyOf(array, size);
       }
+
     };// Использовать анонимный внутренний класс
   }
 
   public static <T> DataSet<T> newImmutableDataSet(final T element, final T... elements) {
-    return null; // Использовать анонимный внутренний класс
+    T[] array = (T[]) new Object[elements.length + 1];
+    array[0] = element;
+    System.arraycopy(elements, 0, array, 1, elements.length);
+    return newImmutableDataSet(array); // Использовать анонимный внутренний класс
   }
 
   public static <T> LinkedList<T> newLinkedListWithDuplicates(final DataSet<T>... dataSets) {
-    return null; //Использовать отпимальный алгоритм для объединения
+    LinkedList<T> resultList = new LinkedList<>();
+    for (DataSet<T> element : dataSets) {
+      if (element instanceof LinkedList) {
+        resultList.addAll((LinkedList<T>) element);
+      } else {
+        for (int i = 0; i < element.size(); i++) {
+          resultList.add(element.get(i));
+        }
+      }
+    }
+    return resultList; //Использовать отптимальный алгоритм для объединения
   }
 
   public static <T> DataSet<T> newDataSetWithoutDuplicates(final DataSet<T>... dataSets) {
