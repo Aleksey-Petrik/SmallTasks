@@ -62,11 +62,42 @@ public final class DataUtils {
         }
       }
     }
-    return resultList; //Использовать отптимальный алгоритм для объединения
+    return resultList; //Использовать оптимальный алгоритм для объединения
   }
 
   public static <T> DataSet<T> newDataSetWithoutDuplicates(final DataSet<T>... dataSets) {
-    return null; // Использовать внутренний класс для реализации логики по удалению дубликатов
+    DataSet<T> dataSet = new DynamicArray<>() {
+      @Override
+      public void add(T element) {
+        if (!elementExist(element)) {
+          super.add(element);
+        }
+      }
+
+      @Override
+      public T remove(int index) {
+        return null;
+      }
+
+      private boolean elementExist(T element) {
+        for (T value : super.toArray()) {
+          if (value.equals(element)) {
+            return true;
+          }
+        }
+        return false;
+      }
+    };
+
+    LinkedList<T> linkedList = newLinkedListWithDuplicates(dataSets);
+
+    Item<T> current = linkedList.first;
+    while (current != null) {
+      dataSet.add(current.getValue());
+      current = current.getNext();
+    }
+
+    return dataSet; // Использовать внутренний класс для реализации логики по удалению дубликатов
   }
 
   public static <T> Queue<T> newQueue(final DataSet<T> dataSet) {
