@@ -10,6 +10,11 @@ public class DynamicArray<T> extends DataSet<T> {
     init();
   }
 
+  public DynamicArray(T[] array) {
+    this.array = array;
+    size = array.length;
+  }
+
   @Override
   public void add(T value) {
     if (size >= array.length) {

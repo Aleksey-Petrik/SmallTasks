@@ -6,6 +6,10 @@ public class Queue<T> extends DataStructure<T> {
     super(new LinkedList());
   }
 
+  public Queue(LinkedList<T> linkedList) {
+    super(linkedList);
+  }
+
   @Override
   protected int getCurrentIndex() {
     return 0;

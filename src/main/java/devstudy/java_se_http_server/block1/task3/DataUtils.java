@@ -101,19 +101,25 @@ public final class DataUtils {
   }
 
   public static <T> Queue<T> newQueue(final DataSet<T> dataSet) {
-    return null; //Учитывать эффективность массива и связного списка при создании очереди
+    if (dataSet instanceof LinkedList) {
+      return new Queue<>((LinkedList<T>) dataSet);
+    }
+    return new Queue<T>(newLinkedListWithDuplicates(dataSet)); //Учитывать эффективность массива и связного списка при создании очереди
   }
 
   public static <T> Stack<T> newStack(final DataSet<T> dataSet) {
-    return null; //Учитывать эффективность массива и связного списка при создании стэка
+    if (dataSet instanceof DynamicArray) {
+      return new Stack<>((DynamicArray<T>) dataSet);
+    }
+    return newStack(dataSet.toArray()); //Учитывать эффективность массива и связного списка при создании стэка
   }
 
   public static <T> Queue<T> newQueue(final T[] array) {
-    return null; //Учитывать эффективность массива и связного списка при создании очереди
+    return newQueue(newImmutableDataSet(array)); //Учитывать эффективность массива и связного списка при создании очереди
   }
 
   public static <T> Stack<T> newStack(final T[] array) {
-    return null; //Учитывать эффективность массива и связного списка при создании стэка
+    return new Stack<T>(new DynamicArray<>(array)); //Учитывать эффективность массива и связного списка при создании стэка
   }
 
   private DataUtils() {

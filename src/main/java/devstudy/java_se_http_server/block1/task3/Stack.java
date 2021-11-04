@@ -6,6 +6,10 @@ public class Stack<T> extends DataStructure<T> {
     super(new DynamicArray());
   }
 
+  public Stack(DynamicArray<T> dynamicArray) {
+    super(dynamicArray);
+  }
+
   @Override
   protected int getCurrentIndex() {
     return size() - 1;
