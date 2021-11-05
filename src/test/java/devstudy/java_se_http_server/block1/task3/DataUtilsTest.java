@@ -55,9 +55,22 @@ class DataUtilsTest {
     Truth.assertWithMessage("ERROR").that(actualArray).isEqualTo(expectedArray);
   }
 
+  @Test
+  void newQueue() {
+    Queue queueActual = DataUtils.newQueue(dataSet[0]);
+    Queue<Integer>queueExpected = new Queue<>();
+    queueExpected.add(1);
+    queueExpected.add(2);
+    queueExpected.add(3);
+    queueExpected.add(4);
+    queueExpected.add(5);
+    Truth.assertWithMessage("ERROR").that(queueActual).isEqualTo(queueExpected);
+  }
+
   private void fillDataSet(DataSet dataSet, int start, int end) {
     for (int i = start; i <= end; i++) {
       dataSet.add(i);
     }
   }
+
 }
