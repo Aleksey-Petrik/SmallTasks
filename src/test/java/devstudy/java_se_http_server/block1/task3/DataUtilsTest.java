@@ -64,7 +64,19 @@ class DataUtilsTest {
     queueExpected.add(3);
     queueExpected.add(4);
     queueExpected.add(5);
-    Truth.assertWithMessage("ERROR").that(queueActual).isEqualTo(queueExpected);
+    Truth.assertWithMessage("ERROR").that(queueActual.dataSet.toArray()).isEqualTo(queueExpected.dataSet.toArray());
+  }
+
+  @Test
+  void newStack() {
+    Stack stackActual = DataUtils.newStack(dataSet[0]);
+    Stack<Integer>stackExpected = new Stack<>();
+    stackExpected.add(1);
+    stackExpected.add(2);
+    stackExpected.add(3);
+    stackExpected.add(4);
+    stackExpected.add(5);
+    Truth.assertWithMessage("ERROR").that(stackActual.dataSet.toArray()).isEqualTo(stackExpected.dataSet.toArray());
   }
 
   private void fillDataSet(DataSet dataSet, int start, int end) {
