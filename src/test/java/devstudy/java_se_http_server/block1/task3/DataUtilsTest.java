@@ -58,7 +58,7 @@ class DataUtilsTest {
   @Test
   void newQueue() {
     Queue queueActual = DataUtils.newQueue(dataSet[0]);
-    Queue<Integer>queueExpected = new Queue<>();
+    Queue<Integer> queueExpected = new Queue<>();
     queueExpected.add(1);
     queueExpected.add(2);
     queueExpected.add(3);
@@ -70,7 +70,7 @@ class DataUtilsTest {
   @Test
   void newStack() {
     Stack stackActual = DataUtils.newStack(dataSet[0]);
-    Stack<Integer>stackExpected = new Stack<>();
+    Stack<Integer> stackExpected = new Stack<>();
     stackExpected.add(1);
     stackExpected.add(2);
     stackExpected.add(3);

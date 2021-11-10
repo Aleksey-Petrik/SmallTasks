@@ -21,4 +21,5 @@ class StackTest {
     }
     Truth.assertWithMessage("").that(stack.get()).isEqualTo(-1);
   }
+
 }

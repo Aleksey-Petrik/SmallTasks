@@ -21,4 +21,5 @@ class QueueTest {
     }
     Truth.assertWithMessage("").that(queue.get()).isEqualTo(-1);
   }
+
 }
