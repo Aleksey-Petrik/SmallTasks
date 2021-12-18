@@ -14,7 +14,7 @@ public class MainIterator {
         list.add("Mary");
         list.add("Bob");
 
-        Iterator<String> iterator = list.listIterator();
+        Iterator<String> iterator = list.iterator();
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
