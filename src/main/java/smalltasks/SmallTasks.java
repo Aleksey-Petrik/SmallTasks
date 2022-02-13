@@ -38,6 +38,10 @@ public class SmallTasks {
         System.out.println(removeDuplicates(new int[]{0, 1}));
 
         System.out.println(strStr("mississippi", "issip"));
+
+        System.out.println(getIndexOrInsert(new int[]{1, 3, 5, 6}, 5));
+        System.out.println(getIndexOrInsert(new int[]{1, 3, 5, 6}, 2));
+        System.out.println(getIndexOrInsert(new int[]{1, 3, 5, 6}, 7));
     }
 
     /*
@@ -240,15 +244,15 @@ public class SmallTasks {
         For the purpose of this problem, we will return 0 when needle is an empty string. This is consistent to C's strstr() and Java's indexOf().
      */
     public static int strStr(String haystack, String needle) {
-        if (needle.isEmpty()){
+        if (needle.isEmpty()) {
             return 0;
         }
-        char[]strLine = haystack.toCharArray();
-        char[]strSearch = needle.toCharArray();
+        char[] strLine = haystack.toCharArray();
+        char[] strSearch = needle.toCharArray();
         int index = 0;
-        for(int i = 0; i < strLine.length; i++ ){
+        for (int i = 0; i < strLine.length; i++) {
             if (strLine[i] == strSearch[index]) {
-                if (index == strSearch.length - 1){
+                if (index == strSearch.length - 1) {
                     return i - index;
                 }
                 index++;
@@ -262,6 +266,21 @@ public class SmallTasks {
 
         return -1;
     }//#28
+
+    /*  Task 35. https://leetcode.com
+
+     */
+    public static int getIndexOrInsert(int[] nums, int target) {
+        int index = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == target) {
+                return i;
+            } else if (target > nums[i]) {
+                index = i + 1;
+            }
+        }
+        return index;
+    }//#35
 
     /*  Task 28. Implement strStr(). https://leetcode.com
         Implement strStr().
